@@ -12,19 +12,19 @@ export class TweetService {
   constructor(private http: HttpClient) { }
 
   getAllTweets() {
-    return this.http.get("http://localhost:8082/api/v1.0/tweets/all");
+    return this.http.get("https://tweetappbackenddhruv.azurewebsites.net/api/v1.0/tweets/all");
   }
   postTweet(TweetRequest: TweetRequest) {
     this.user = JSON.parse(localStorage.getItem('userId') || '{}');
-    return this.http.post<any>("http://localhost:8082/api/v1.0/tweets/add/" + this.user, TweetRequest);
+    return this.http.post<any>("https://tweetappbackenddhruv.azurewebsites.net/api/v1.0/tweets/add/" + this.user, TweetRequest);
   }
   getUserTweet(){
     this.user = JSON.parse(localStorage.getItem('userId') || '{}');
-    return this.http.get("http://localhost:8082/api/v1.0/tweets/"+this.user);
+    return this.http.get("https://tweetappbackenddhruv.azurewebsites.net/api/v1.0/tweets/"+this.user);
   }
   deleteTweet(del:String){
     this.user = JSON.parse(localStorage.getItem('userId') || '{}');
-    return this.http.delete<any>("http://localhost:8082/api/v1.0/tweets/"+this.user+"/delete/"+del);
+    return this.http.delete<any>("https://tweetappbackenddhruv.azurewebsites.net/api/v1.0/tweets/"+this.user+"/delete/"+del);
   }
 
 }
